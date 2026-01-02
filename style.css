@@ -18,7 +18,6 @@ body {
   color: var(--dark);
 }
 
-/* COMMON */
 .container {
   max-width: 1200px;
   margin: auto;
@@ -27,7 +26,6 @@ body {
 
 /* HEADER */
 .header {
-  background: var(--white);
   border-bottom: 1px solid #eee;
 }
 
@@ -54,7 +52,7 @@ body {
 
 .hero-text h1 {
   font-size: 36px;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .hero-text h1 span {
@@ -62,9 +60,8 @@ body {
 }
 
 .hero-text p {
-  font-size: 16px;
-  color: var(--gray);
   margin-bottom: 20px;
+  color: var(--gray);
 }
 
 .btn {
@@ -98,7 +95,6 @@ body {
 }
 
 .service-card {
-  background: var(--white);
   border: 1px solid #eee;
   border-radius: 14px;
   padding: 30px;
@@ -116,6 +112,68 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: bold;
+}
+
+/* SIDE PANEL */
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 360px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -4px 0 15px rgba(0,0,0,0.15);
+  transition: right 0.4s ease;
+  z-index: 9999;
+}
+
+.side-panel.open {
+  right: 0;
+}
+
+.panel-header {
+  padding: 16px;
+  background: var(--yellow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.panel-content {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+textarea {
+  resize: none;
+  height: 70px;
+}
+
+.full-btn {
+  width: 100%;
+  margin-top: 10px;
 }
 
 /* MOBILE */

@@ -8,14 +8,12 @@
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="container nav">
     <div class="logo">Quick<span>Press</span></div>
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="container hero-wrap">
     <div class="hero-text">
@@ -29,32 +27,14 @@
   </div>
 </section>
 
-<!-- SERVICES -->
 <section class="services">
   <div class="container">
     <h2 class="section-title">Our Services</h2>
-
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">P</div>
-        <h3>Pickup</h3>
-        <p>Doorstep pickup</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">I</div>
-        <h3>Ironing</h3>
-        <p>Professional ironing</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">D</div>
-        <h3>Delivery</h3>
-        <p>Fast delivery</p>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">T</div>
-        <h3>Tracking</h3>
-        <p>Order updates</p>
-      </div>
+      <div class="service-card"><div class="service-icon">P</div><h3>Pickup</h3></div>
+      <div class="service-card"><div class="service-icon">I</div><h3>Ironing</h3></div>
+      <div class="service-card"><div class="service-icon">D</div><h3>Delivery</h3></div>
+      <div class="service-card"><div class="service-icon">T</div><h3>Tracking</h3></div>
     </div>
   </div>
 </section>
@@ -68,18 +48,18 @@
 
   <div class="panel-content">
 
-    <!-- PICKUP STEP -->
+    <!-- PICKUP -->
     <div id="pickupStep">
-      <input type="text" placeholder="Full Name">
-      <input type="tel" placeholder="Mobile Number">
-      <textarea placeholder="Pickup Address"></textarea>
+      <input type="text" id="name" placeholder="Full Name">
+      <input type="tel" id="mobile" placeholder="Mobile Number">
+      <textarea id="pickup" placeholder="Pickup Address"></textarea>
       <button class="btn primary full-btn" onclick="goToDelivery()">Next</button>
     </div>
 
-    <!-- DELIVERY STEP -->
+    <!-- DELIVERY -->
     <div id="deliveryStep" style="display:none;">
-      <textarea placeholder="Delivery Address"></textarea>
-      <input type="time">
+      <textarea id="delivery" placeholder="Delivery Address"></textarea>
+      <input type="time" id="time">
       <button class="btn primary full-btn" onclick="confirmOrder()">Confirm Order</button>
     </div>
 

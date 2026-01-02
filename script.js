@@ -13,45 +13,45 @@ function goToDelivery() {
 }
 
 function confirmOrder() {
-  var data = {
-    name: document.getElementById("name").value,
-    mobile: document.getElementById("mobile").value,
-    pickup: document.getElementById("pickup").value,
-    delivery: document.getElementById("delivery").value,
-    time: document.getElementById("time").value
-  };
+  var name = document.getElementById("name").value;
+  var mobile = document.getElementById("mobile").value;
+  var pickup = document.getElementById("pickup").value;
+  var delivery = document.getElementById("delivery").value;
+  var time = document.getElementById("time").value;
 
-  fetch(
-    "https://script.google.com/macros/s/AKfycbxL6QLzvfnEp1RUv-wLnW-lYWy2-NfqUcXCJT2Z3i4T8-z3Sq-Hw7ZcmuskMGzZt83Y/exec",
-    {
-      method: "POST",
-      body: JSON.stringify(data)
-    }
-  )
-    .then(res => res.json())
-    .then(res => {
-      var orderId = res.orderId;
+  if (!name || !mobile || !pickup || !delivery) {
+    alert("Please fill all details");
+    return;
+  }
 
-      var message =
-        "📦 New Order – QuickPress\n\n" +
-        "🆔 Order ID: " + orderId + "\n" +
-        "👤 Name: " + data.name + "\n" +
-        "📞 Mobile: " + data.mobile + "\n" +
-        "📍 Pickup: " + data.pickup + "\n" +
-        "🏠 Delivery: " + data.delivery + "\n" +
-        "⏰ Time: " + data.time;
+  // 🔥 1) WhatsApp OPEN FIRST (user click based – never blocked)
+  var message =
+    "📦 New Order – QuickPress\n\n" +
+    "👤 Name: " + name + "\n" +
+    "📞 Mobile: " + mobile + "\n" +
+    "📍 Pickup: " + pickup + "\n" +
+    "🏠 Delivery: " + delivery + "\n" +
+    "⏰ Time: " + time;
 
-      window.open(
-        "https://wa.me/919997874502?text=" + encodeURIComponent(message),
-        "_blank"
-      );
+  window.open(
+    "https://wa.me/919997874502?text=" + encodeURIComponent(message),
+    "_blank"
+  );
 
-      document.getElementById("deliveryStep").style.display = "none";
-      document.getElementById("thankYouStep").innerHTML =
-        "<h3>✅ Order Placed</h3><p>Your Order ID:<br><b>" +
-        orderId +
-        "</b></p>";
-      document.getElementById("thankYouStep").style.display = "block";
-      document.getElementById("panelTitle").innerText = "Thank You";
-    });
+  // 🔄 2) Save to Google Sheet in background
+  fetch("https://script.google.com/macros/s/AKfycbxL6QLzvfnEp1RUv-wLnW-lYWy2-NfqUcXCJT2Z3i4T8-z3Sq-Hw7ZcmuskMGzZt83Y/exec", {
+    method: "POST",
+    body: JSON.stringify({
+      name: name,
+      mobile: mobile,
+      pickup: pickup,
+      delivery: delivery,
+      time: time
+    })
+  });
+
+  // ✅ 3) UI update
+  document.getElementById("deliveryStep").style.display = "none";
+  document.getElementById("thankYouStep").style.display = "block";
+  document.getElementById("panelTitle").innerText = "Thank You";
 }

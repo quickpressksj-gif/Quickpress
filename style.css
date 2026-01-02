@@ -160,3 +160,29 @@ textarea {
     font-size: 28px;
   }
 }
+/* STICKY MOBILE ORDER BUTTON */
+.sticky-order-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sticky-order-btn {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #e63946;
+    color: #fff;
+    text-align: center;
+    padding: 16px 0;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 9998;
+  }
+
+  body {
+    padding-bottom: 70px; /* button space */
+  }
+}

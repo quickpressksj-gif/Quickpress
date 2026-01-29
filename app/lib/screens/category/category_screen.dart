@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../providers/cart_provider.dart';
 
 class CategoryScreen extends StatelessWidget {
   final String category;
@@ -14,23 +16,26 @@ class CategoryScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          productTile("Shirt Ironing", "₹10 / piece"),
-          productTile("Pant Ironing", "₹12 / piece"),
-          productTile("T-Shirt Ironing", "₹8 / piece"),
+          productTile(context, "Shirt Ironing", 10),
+          productTile(context, "Pant Ironing", 12),
+          productTile(context, "T-Shirt Ironing", 8),
         ],
       ),
     );
   }
 
-  Widget productTile(String name, String price) {
+  Widget productTile(BuildContext context, String name, int price) {
     return Card(
       child: ListTile(
         leading: const Icon(Icons.checkroom, color: Colors.orange),
         title: Text(name),
-        subtitle: Text(price),
+        subtitle: Text("₹$price / piece"),
         trailing: ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
-          onPressed: () {},
+          onPressed: () {
+            Provider.of<CartProvider>(context, listen: false)
+                .addItem(name, name, price);
+          },
           child: const Text("ADD"),
         ),
       ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'widgets/bottom_navbar.dart';
+import 'providers/cart_provider.dart';
 
 void main() {
   runApp(const QuickPressApp());
@@ -10,15 +12,12 @@ class QuickPressApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'QuickPress',
-      theme: ThemeData(
-        primaryColor: Colors.yellow,
-        scaffoldBackgroundColor: Colors.white,
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (_) => CartProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: const BottomNavBar(),
       ),
-      home: const BottomNavBar(),
     );
   }
 }
